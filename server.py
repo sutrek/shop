@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_migrate import Migrate
 from config import Config
 from extensions import db
-from models import Products
+from models import Products,Clients
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -34,6 +34,25 @@ def add_product():
 
     return render_template('products_add.html', current_page="products_add")
 
+
+@app.route('/clients')
+def clients():
+    clients = Clients.query.all()
+    return render_template('clients.html', clients=clients)
+
+@app.route('/clients/add', methods=['GET', 'POST'])
+def add_client():
+    if request.method == 'POST':
+        client = Clients(
+            login=request.form['login'],
+            address=request.form['address'],
+            order_history=request.form['order_history']
+        )
+        db.session.add(client)
+        db.session.commit()
+        return redirect(url_for('clients'))
+
+    return render_template('clients_add.html', current_page="clients_add")
 
 if __name__ == "__main__":
     app.run("0.0.0.0", port=5000, debug=True)

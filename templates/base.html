@@ -25,7 +25,7 @@
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if current_page == 'customers' %}active{% endif %}"
-                                href="#">Покупатели</a>
+                                href="{{ url_for('clients') }}">Покупатели</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link {% if current_page == 'products' %}active{% endif %}"
@@ -44,7 +44,7 @@
         <footer class="py-3 my-4 ">
             <ul class="nav justify-content-center border-bottom pb-3 mb-3">
                 <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link px-2 text-body-secondary">Главная</a></li>
-                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Покупатели</a></li>
+                <li class="nav-item"><a href="{{ url_for('clients') }}" class="nav-link px-2 text-body-secondary">Покупатели</a></li>
                 <li class="nav-item"><a href="{{ url_for('products') }}" class="nav-link px-2 text-body-secondary">Товары</a></li>
                 <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">О нас</a></li>
             </ul>

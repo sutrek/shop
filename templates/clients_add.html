@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+{% block title %}Добавление клиента{% endblock %}
+{% block content %}
+<h2>Добавить клиента</h2>
+<form method="POST" action="{{ url_for('add_client') }}">
+  <div class="mb-3">
+    <label class="form-label">Логин</label>
+    <input type="text" class="form-control" name="login" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Адрес</label>
+    <input type="text" class="form-control" name="address">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">История заказов</label>
+    <textarea class="form-control" name="order_history" rows="3"></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Добавить</button>
+</form>
+{% endblock %}
