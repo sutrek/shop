@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Список клиентов{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Логин</th>
+            <th>Адрес</th>
+            <th>История заказов</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for client in clients %}
+        <tr>
+            <td>{{ client.id }}</td>
+            <td>{{ client.login }}</td>
+            <td>{{ client.address }}</td>
+            <td>{{ client.order_history }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('add_client') }}">
+    <button type="button" class="btn btn-secondary">Добавить</button>
+</a>
+{% endblock %}
