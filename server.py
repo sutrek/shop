@@ -2,7 +2,7 @@ from flask import Flask, render_template, request, redirect, url_for
 from flask_migrate import Migrate
 from config import Config
 from extensions import db
-from models import Products,Clients
+from models import Products, Clients
 
 app = Flask(__name__)
 app.config.from_object(Config)
@@ -31,9 +31,7 @@ def add_product():
         db.session.commit()
         return redirect(url_for('products'))  
 
-
     return render_template('products_add.html', current_page="products_add")
-
 
 @app.route('/clients')
 def clients():
