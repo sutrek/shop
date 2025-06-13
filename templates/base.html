@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Интернет магазин{% endblock %}</title>
+    <link href="/static/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/static/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+    <header class="position-fixed w-100">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <div class="container-fluid">
+                <a class="navbar-brand" href="#">Интернет магазин</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="nav-link {% if current_page == 'main' %}active{% endif %}"
+                                href="{{ url_for('index') }}">Главная</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if current_page == 'customers' %}active{% endif %}"
+                                href="#">Покупатели</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link {% if current_page == 'products' %}active{% endif %}"
+                                href="{{ url_for('products') }}">Товары</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main class="pt-5 mt-4 container">
+        {% block content %}{% endblock %}
+    </main>
+    <div class="fixed-bottom">
+        <footer class="py-3 my-4 ">
+            <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+                <li class="nav-item"><a href="{{ url_for('index') }}" class="nav-link px-2 text-body-secondary">Главная</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">Покупатели</a></li>
+                <li class="nav-item"><a href="{{ url_for('products') }}" class="nav-link px-2 text-body-secondary">Товары</a></li>
+                <li class="nav-item"><a href="#" class="nav-link px-2 text-body-secondary">О нас</a></li>
+            </ul>
+            <p class="text-center text-body-secondary">© 2025 Company, Inc</p>
+        </footer>
+    </div>
+</body>
+
+</html>

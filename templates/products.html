@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+{% block title %}Список товаров{% endblock %}
+{% block content %}
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Название</th>
+            <th>Цена</th>
+            <th>Категория</th>
+            <th>Остаток</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in products %}
+        <tr>
+            <td>{{ product.id }}</td>
+            <td>{{ product.name }}</td>
+            <td>{{ product.price }}</td>
+            <td>{{ product.category }}</td>
+            <td>{{ product.remainder }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<a href="{{ url_for('add_product') }}">
+    <button type="button" class="btn btn-secondary">Добавить</button>
+</a>
+{% endblock %}
