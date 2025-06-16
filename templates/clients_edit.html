@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}Редактирование клиента{% endblock %}
+{% block content %}
+<h2>Редактировать клиента</h2>
+<form method="POST">
+  <div class="mb-3">
+    <label class="form-label">Логин</label>
+    <input type="text" class="form-control" name="login" value="{{ client.login }}" required>
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Адрес</label>
+    <input type="text" class="form-control" name="address" value="{{ client.address }}">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">История заказов</label>
+    <textarea class="form-control" name="order_history">{{ client.order_history }}</textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Сохранить</button>
+  <a href="{{ url_for('clients') }}" class="btn btn-secondary">Отмена</a>
+</form>
+{% endblock %}
